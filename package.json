@@ -1,0 +1,31 @@
+{
+  "name": "intro_to_backend",
+  "version": "1.0.0",
+  "description": "tutorial for backend",
+  "homepage": "https://github.com/yupitsmegd7/intro_to_backend#readme",
+  "bugs": {
+    "url": "https://github.com/yupitsmegd7/intro_to_backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yupitsmegd7/intro_to_backend.git"
+  },
+  "license": "ISC",
+  "author": "Gourav",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/src/index.js",
+    "dev": "nodemon backend/src/index.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^18.0.4",
+    "express": "^5.2.1",
+    "mongoose": "^9.10.2",
+    "nodemon": "^1.14.10"
+  },
+  "allowScripts": {
+    "node-gyp-build@4.8.4": true
+  }
+}
