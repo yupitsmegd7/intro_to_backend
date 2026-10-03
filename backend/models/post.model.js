@@ -1,27 +1,27 @@
 import mongoose, {Schema} from "mongoose";
 
-const postSchema =new Schema(
+const postSchema = new Schema(
     {
-        name:{
-            type: stringify,
+        name: {
+            type: String,
             required: true,
             trim: true
         },
-        description:{
-            type: stringify,
-            required:true,
+        description: {
+            type: String,
+            required: true,
             trim: true
         },
-        age:{
+        age: {
             type: Number,
             required: true,
-            min:1,
-            max:60
+            min: 1,
+            max: 60
         }
     },
     {
         timestamps: true
     }
-)
+);
 
-export const post= mongoose.model('Post',postSchema);
+export const Post = mongoose.model('Post', postSchema);

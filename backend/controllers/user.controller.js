@@ -2,7 +2,7 @@ import { User } from "../models/user.model.js";
 import bcrypt from "bcrypt";
 const registerUser = async (req, res) => {
     try {
-        const { username, email, password } = req.body;
+        const { username, email, password } = req.body || {};
 
         // Basic validation
         if (!username || !password || !email) {
@@ -39,7 +39,7 @@ const registerUser = async (req, res) => {
 const loginUser = async (req, res) => {
     try {
         //checking user existance
-        const { email, password } = req.body;
+        const { email, password } = req.body || {};
         const user = await User.findOne({
             email: email?.trim().toLowerCase()
         });
@@ -68,16 +68,20 @@ const loginUser = async (req, res) => {
         });
     } catch (error) {
         res.status(500).json({
-            message: "Internal server error"
+            message: "Internal server error",
+            error: error.message
         });
     }
 };
 const logoutUser = async (req,res) =>{
     try {
-        const { email }= req.body;
+        const { email } = req.body || {};
+        if (!email) return res.status(400).json({
+            message: "email is required"
+        });
 
         const user= await User.findOne({
-            email: email?.trim().toLowerCase()  //Optional chaining (?.)
+            email: email?.trim().toLowerCase()
         });
         if(!user)return res.status(404).json({
             message: "user not found"
